@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Discord</title>
     <link rel="icon" href="slike/favicon.ico">
+    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
@@ -18,14 +19,14 @@
                 <div id="LoginLeft">
                     <h2>Welcome back!</h2>
                     <p class="dog">We're so excited to see you again!</p>
-                    <form action="cuh" method="post">
+                    <form method="post">
                     <div class="emailorphonepass">EMAIL OR PHONE NUMBER  <p class="rdece"> *</p></div>
-                    <input type="email" name="email" required>
+                    <input type="text" name="email" id="in1" required onchange="loginNumOrEmail()">
                     <div class="emailorphonepass">PASSWORD  <p class="rdece"> *</p></div>
                     <input type="password" name="password" required>
                     <div class="emailorphonepass2"><a>Forgot your password?</a></div>
                     
-                    <button type="submit">Log in</button>
+                    <button type="submit" id="gum">Log in</button>
                     </form> 
                     
                     

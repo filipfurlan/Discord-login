@@ -76,6 +76,21 @@ function preveri() {
         gumb.disabled=true;
 }
 
+function loginNumOrEmail() {
+    const input = document.getElementById('in1').value.trim();
+    const gumb = document.getElementById("gum");
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const phonePattern = /^\+?(\d[\d-.() ]{7,}\d$)/;
+
+    if (input === "") {
+        gumb.disabled = true;
+    } else if (!emailPattern.test(input) && !phonePattern.test(input)) {
+        showAlert('Invalid input. Please enter a valid email or phone number.');
+        gumb.disabled = true;
+    } else {
+        gumb.disabled = false; // Input is valid
+    }
+}
 
 function showAlert(message, icon = 'error') {
     Swal.fire({

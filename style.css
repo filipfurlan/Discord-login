@@ -177,7 +177,10 @@ p {
     font-size: 16px;
     cursor: pointer;
 }
-
+#loginMain button:disabled{
+    cursor: not-allowed;
+    background-color: rgb(71,76,151);
+}
 #RegisterDiv {
     margin: 10px 0 0 5%;
     text-align: left;
@@ -254,6 +257,8 @@ a:hover {
 @media(max-width: 750px){
     #loginMain {
         flex-direction: column;
+        width: auto;
+        height: 100%;
     }
     #premik{
         width: 100%;
@@ -264,8 +269,11 @@ a:hover {
     #left, #right{
         height: 0;
     }
+    #left{
+        display: none;
+    }
     #left > img{
-        margin-left: 50%;
+        display: none;
     }
 }
 
@@ -273,4 +281,5 @@ a:hover {
     #loginMain{
         height: auto;
     }
+
 }
