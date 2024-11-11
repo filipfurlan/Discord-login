@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Discord</title>
     <link rel="icon" href="slike/favicon.ico">
-    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
     <div id="left">
         <img src="slike/logo.svg" alt="logo">
@@ -20,19 +21,21 @@
                     <h2>Welcome back!</h2>
                     <p class="dog">We're so excited to see you again!</p>
                     <form method="post">
-                    <div class="emailorphonepass">EMAIL OR PHONE NUMBER  <p class="rdece"> *</p></div>
-                    <input type="text" name="email" id="in1" required onchange="loginNumOrEmail()">
-                    <div class="emailorphonepass">PASSWORD  <p class="rdece"> *</p></div>
-                    <input type="password" name="password" required>
-                    <div class="emailorphonepass2"><a>Forgot your password?</a></div>
-                    
-                    <button type="submit" id="gum">Log in</button>
-                    </form> 
-                    
-                    
+                        <div class="emailorphonepass">EMAIL OR PHONE NUMBER <p class="rdece"> *</p>
+                        </div>
+                        <input type="text" name="email" id="in1" required onchange="loginNumOrEmail()">
+                        <div class="emailorphonepass">PASSWORD <p class="rdece"> *</p>
+                        </div>
+                        <input type="password" name="password" required>
+                        <div class="emailorphonepass2"><a>Forgot your password?</a></div>
+
+                        <button type="submit" id="gum">Log in</button>
+                    </form>
+
+
                 </div>
                 <div id="RegisterDiv">
-                    <p class="dog">Need an account? <a href="register.html">Register</a></p> 
+                    <p class="dog">Need an account? <a href="register.html">Register</a></p>
                 </div>
             </div>
             <div id="LoginRight">
@@ -40,7 +43,10 @@
                     <div id="QR"></div>
                     <div id="QRinfo">
                         <h2>Log in with QR Code</h2>
-                        <div id="textholder"><p id="QRinfoText">Scan this with the <strong>Discord mobile app</strong> to log in instantly.</p></div>
+                        <div id="textholder">
+                            <p id="QRinfoText">Scan this with the <strong>Discord mobile app</strong> to log in
+                                instantly.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,14 +57,47 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        
+        const gumb = document.getElementById("gum");
+        gumb.disabled=true;
         let qrData = `https://discord.com/login`;
-        
+
         let qrcode = new QRCode(document.getElementById("QR"), {
             text: qrData,  // Text or URL encoded in the QR code
             width: 150,    // QR code width
             height: 150,   // QR code height
         });
+
+        function loginNumOrEmail() {
+            const input = document.getElementById('in1').value.trim();
+            
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const phonePattern = /^\+?(\d[\d-.() ]{7,}\d$)/;
+
+            if (input === "") {
+                gumb.disabled = true;
+            } else if (!emailPattern.test(input) && !phonePattern.test(input)) {
+                showAlert('Invalid input. Please enter a valid email or phone number.');
+                gumb.disabled = true;
+            } else {
+                gumb.style.color="white";
+                gumb.disabled = false;
+            }
+        }
+        function showAlert(message, icon = 'error') {
+            Swal.fire({
+                toast: true,
+                position: 'bottom-end',
+                icon: icon,
+                title: message,
+                confirmButtonText: "Ok",
+                showConfirmButton: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                }
+            });
+        }
     </script>
 </body>
+
 </html>

@@ -1,0 +1,264 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    background-image: url(../slike/newback.svg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+}
+#middle{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#left, #right{
+    width: 37.5%;
+    height: 100%;
+}
+#register{
+    position: relative;
+    height: 75%;
+    width: 100%;
+    background-color: rgb(49, 51, 56);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    animation: slideInFromRight 0.2s ease-out forwards;
+}
+@keyframes slideInFromRight {
+    from {
+      transform: translateY(-20%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+#mainform{
+    width: 100%;
+    margin: 7%;
+}
+#box{
+    height: 100%;
+    width: 100%;
+}
+h2{
+    font-family: gg;
+    color: white;
+    margin: 0 auto;
+}
+#header{
+    height: 4%;
+}
+#maininput{
+    display: flex;
+    flex-direction: column;
+}
+.inputtext{
+    width: 80%;
+    color: lightgray;
+    font-family: gg2;
+    font-size: 12px;
+    margin-bottom: 2%;
+}
+.rdece{
+    display: inline; 
+    width: 15%;
+    
+    color: lightcoral;
+    padding-left: 2px;
+}
+input{
+    color: white;
+    padding: 10px;
+    background-color: rgb(30, 31, 34);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    border-color: rgb(30, 31, 34);;
+}
+.indiv{
+    margin-top: 5%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+fieldset{
+    border: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+#day, #year{
+    margin-left: 5px;
+}
+fieldset > select{
+    width: 32.64%;
+    background-color: rgb(30, 31, 34);
+    padding: 10px;
+    border-radius: 5px;
+    border-color: rgb(30, 31, 34);
+}
+#optional{
+    display: flex;
+    margin-top: 5%;
+}
+.check{
+    width: 15px;
+    height: 15px;
+    appearance: none;
+    padding: 12px;
+    border-color: gray;
+    background-color: rgb(30, 31, 34);
+    margin-right: 3%;
+}
+.check:checked{
+    background-color: rgb(93,102,246);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.check:checked::after{
+    width: 20px;
+    height: 20px;
+    content: "✔";
+    color: white;
+}
+#yap{
+    font-family: 'Whitney', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: gray;
+    text-align: left;
+}
+#continue{
+    margin-top: 4%;
+}
+#continue > button{
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    width: 100%;
+    background-color: rgb(93,102,246);
+    
+}
+#continue >button:hover{
+    background-color: rgb(75,83,199);
+    cursor: pointer;
+}
+#continue > button:disabled{
+    color: gray;
+    cursor: not-allowed;
+    background-color: rgb(71,76,151);
+}
+select,option{
+    color: white;
+}
+#conttex{
+    color: white;
+    font-family: gg2;
+    font-size: 16px;
+}
+#terms{
+    display: flex;
+    margin-top: 4%;
+    align-items: center;
+}
+#yap2{
+    font-family: 'Whitney', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;;
+    color: lightgray;
+    font-size: 12px;
+    text-align: left;
+}
+#tologin{
+    margin-top: 4%;
+    text-align: left;
+}
+#tologin > a{
+    font-family: 'Whitney', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+a{
+    text-decoration: none;
+    color: rgb(59,169,255);;
+}
+a:hover{
+    text-decoration: underline;
+}
+@font-face {
+    font-family: gg;
+    src: url(../fonts/fent.woff2) format("woff2");
+    font-style: normal;
+}
+@font-face {
+    font-family: gg2;
+    src: url(../fonts/fent2.woff2);
+}
+@media (max-width: 1750px) {
+    body {
+        flex-direction: column; 
+    }
+
+    #left, #right {
+        width: 100%;
+        height: 20%;
+        z-index: -1;
+    }
+
+    #middle {
+        width: 100%;
+        height: auto; 
+    }
+
+    #register {
+        width: 33%;
+        height: auto; 
+        position: relative;
+        z-index: 1;
+    }
+
+}
+@media (max-width: 1450px){
+    #right{
+        display:none;
+    }
+    #register{
+        width: 50%;
+        position: relative;
+        height: 100%;
+    }
+}
+@media (max-width: 1150px){
+    #register{
+        width: 70%;
+    }
+}
+@media(max-width: 700px){
+    #register {
+        width: 100%;
+        height: 100%;
+    }
+
+    #left, #right{
+        height: 0;
+    }
+
+    #mainform{
+        margin: 5%;
+    }
+}
+@media (min-width: 1870px){
+    #register{
+        height: auto;
+        width: auto;
+    }
+}
