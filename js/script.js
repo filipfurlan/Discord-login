@@ -88,6 +88,7 @@ function showAlert(message, icon = 'error') {
         title: message,
         confirmButtonText: "Ok",
         showConfirmButton: true,
+        confirmButtonColor: "rgb(98,103,250)"
       }).then((result) => {
         if (result.isConfirmed) {
             
