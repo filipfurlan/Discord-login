@@ -33,7 +33,7 @@ body{
     display: flex;
     text-align: center;
     justify-content: center;
-    animation: slideInFromRight 0.2s ease-out forwards;
+    animation: slideInFromRight 0.8s ease-out forwards;
 }
 @keyframes slideInFromRight {
     from {

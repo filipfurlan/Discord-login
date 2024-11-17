@@ -31,9 +31,10 @@ body {
     width: 20%;
     height: 100%;
 }
+
 #left > img{
     position: relative;
-    z-index: -2;
+    
     margin: 12.5% 0 0 12.5%;
 }
 #construct{
@@ -80,7 +81,7 @@ p {
     border-radius: 8px;
     text-align: center;
     display: flex;
-    animation: slideInFromRight 0.2s ease-out forwards;
+    animation: slideInFromRight 0.8s ease-out forwards;
 }
 @keyframes slideInFromRight {
     from {
@@ -225,7 +226,7 @@ a:hover {
     #left, #right {
         width: 100%;
         height: auto;
-        z-index: -1;
+        
     }
 
     #middle {
@@ -246,7 +247,6 @@ a:hover {
     }
     #left > img{
         margin: 3% 0 0 3%;
-        z-index: -1;
     }
     #contruct{
         margin: 3% 0 0 3%;
