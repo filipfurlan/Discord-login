@@ -29,7 +29,7 @@
                         </div>
                         <div class="indiv">
                             <p class="inputtext">DISPLAY NAME</p>
-                            <input type="text" name="displayname">
+                            <input type="text" name="displayname" id="disname">
                         </div>
                         <div class="indiv">
                             <p class="inputtext">USERNAME <span class="rdece">*</span></p>
@@ -247,12 +247,12 @@
                             </fieldset>
                         </div>
                         <div id="optional">
-                            <input type="checkbox" name="optional" class="check" >
+                            <input type="checkbox" name="optional" class="check">
                             <p id="yap">(Optional) It’s okay to send me emails with Discord updates, tips, and special
                                 offers. You can opt out at any time.</p>
                         </div>
                         <div id="continue">
-                            <button id="gumb" type="submit" disabled="true">
+                            <button id="gumb" type="submit" disabled="true" >
                                 <p id="conttex">Continue</p>
                             </button>
                         </div>
@@ -273,5 +273,42 @@
 
     </div>
 </body>
+<script>
+    const input = document.getElementById('email');
+    const input2 = document.getElementById('disname');
+    const input3 = document.getElementById('username');
+    const input4 = document.getElementById('pass');
+    const maxChars = 30;
+
+    function showAlert2(message, icon = 'success') {
+        Swal.fire({
+            toast: true,
+            
+            icon: icon,
+            title: message,
+            confirmButtonText: "Ok",
+            showConfirmButton: true,
+            confirmButtonColor: "rgb(98,103,250)"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "index.html";
+            }
+        });
+    }
+    [input, input2, input3, input4].forEach(field => {
+            field.addEventListener('input', () => {
+                if (field.value.length > maxChars) {
+                    field.value = field.value.slice(0, maxChars);
+                }
+            });
+        });
+    const button = document.getElementById('gumb');
+    document.getElementById('mainform').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent actual form submission
+
+    // Add your form submission logic here, e.g., form validation
+    showAlert2('Registration successful! You will be redirected shortly.');
+});
+</script>
 
 </html>

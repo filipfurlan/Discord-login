@@ -11,8 +11,13 @@
 </head>
 
 <body>
+
     <div id="left">
-        <img src="slike/logo.svg" alt="logo">
+        <img src="slike/logo.svg" alt="logo" usemap="#workmap" width="124" height="24">
+
+        <map name="workmap">
+            <area shape="rect" coords="0,0,123,23" alt="logo" onclick="credits()">
+        </map>
     </div>
     <div id="middle">
         <div id="loginMain">
@@ -20,13 +25,13 @@
                 <div id="LoginLeft">
                     <h2>Welcome back!</h2>
                     <p class="dog">We're so excited to see you again!</p>
-                    <form method="post">
+                    <form method="post" id="forma">
                         <div class="emailorphonepass">EMAIL OR PHONE NUMBER <p class="rdece"> *</p>
                         </div>
                         <input type="text" name="email" id="in1" required onchange="loginNumOrEmail()">
                         <div class="emailorphonepass">PASSWORD <p class="rdece"> *</p>
                         </div>
-                        <input type="password" name="password" required>
+                        <input type="password" name="password" id="geslo" required>
                         <div class="emailorphonepass2"><a>Forgot your password?</a></div>
 
                         <button type="submit" id="gum">Log in</button>
@@ -57,8 +62,21 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
+
+        document.getElementById('forma').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent actual form submission
+            const input1 = document.getElementById('in1').value.trim();
+            const inpass = document.getElementById('geslo').value.trim();
+            if (input1 === "test@test.com" && inpass === "test") {
+                    showAlert2("uspeh!");
+                }
+        });
+
         const gumb = document.getElementById("gum");
-        gumb.disabled=true;
+        gumb.disabled = true;
+        gumb.addEventListener('click', () => {
+            console.log('This is a message!');
+        });
         let qrData = `https://discord.com/login`;
 
         let qrcode = new QRCode(document.getElementById("QR"), {
@@ -69,7 +87,6 @@
 
         function loginNumOrEmail() {
             const input = document.getElementById('in1').value.trim();
-            
             const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             const phonePattern = /^\+?(\d[\d-.() ]{7,}\d$)/;
 
@@ -79,8 +96,9 @@
                 showAlert('Invalid input. Please enter a valid email or phone number.');
                 gumb.disabled = true;
             } else {
-                gumb.style.color="white";
+                gumb.style.color = "white";
                 gumb.disabled = false;
+                
             }
         }
         function showAlert(message, icon = 'error') {
@@ -91,13 +109,72 @@
                 title: message,
                 confirmButtonText: "Ok",
                 showConfirmButton: true,
+                confirmButtonColor: "rgb(98,103,250)"
             }).then((result) => {
                 if (result.isConfirmed) {
 
                 }
             });
         }
+        const input = document.getElementById('in1');
+        const geslo = document.getElementById('geslo');
+        const maxChars = 30;
+
+        input.addEventListener('input', () => {
+            const currentLength = input.value.length;
+
+            // If the length exceeds the maxChars, trim the value
+            if (currentLength > maxChars) {
+                input.value = input.value.slice(0, maxChars);
+            }
+
+        });
+        geslo.addEventListener('input', () => {
+            const paslen = geslo.value.length;
+
+            // If the length exceeds the maxChars, trim the value
+            if (paslen > maxChars) {
+                geslo.value = geslo.value.slice(0, maxChars);
+            }
+
+        });
+        function credits() {
+            Swal.fire({
+                toast: true,
+                position: 'bottom-end',
+                icon: "info",
+                title: "<strong>Credits</strong>",
+                confirmButtonText: "Ok",
+                showConfirmButton: true,
+                html: `
+                    Filip Furlan 4.Rb
+                `,
+                confirmButtonColor: "rgb(98,103,250)"
+
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                }
+            });
+        }
+
+        function showAlert2(message, icon = 'success') {
+        Swal.fire({
+            toast: true,
+            
+            icon: icon,
+            title: message,
+            confirmButtonText: "Ok",
+            showConfirmButton: true,
+            confirmButtonColor: "rgb(98,103,250)"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "index.html";
+            }
+        });
+    }
     </script>
+
 </body>
 
 </html>
