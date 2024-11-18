@@ -79,7 +79,7 @@ function preveri() {
     const gumb = document.getElementById("gumb");
     const conttext = document.getElementById("conttex");
     //showAlert(inputcheck + passcheck + datecheck + checkcheck, 'info'  );
-    if(checkcheck){
+    if(checkcheck && inputcheck && passcheck && datecheck){
         gumb.disabled=false;
         conttext.style.color="white";
     }
