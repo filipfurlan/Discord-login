@@ -24,7 +24,7 @@
                     </div>
                     <div id="maininput">
                         <div class="indiv">
-                            <p class="inputtext">EMAIL <span class="rdece">*</span></p>
+                            <p class="inputtext" id="emailtext">EMAIL <span class="rdece">*</span></p>
                             <input type="text" name="email" id="email" required onchange="validateInput()">
                         </div>
                         <div class="indiv">
@@ -36,11 +36,11 @@
                             <input type="text" id="username" name="username" required onchange="validateInput()">
                         </div>
                         <div class="indiv">
-                            <p class="inputtext">PASSWORD <span class="rdece">*</span></p>
+                            <p class="inputtext" id="passtext">PASSWORD <span class="rdece">*</span></p>
                             <input type="password" name="password" id="pass" onchange="checkPassword()">
                         </div>
                         <div class="indiv">
-                            <p class="inputtext">DATE OF BIRTH <span class="rdece">*</span></p>
+                            <p class="inputtext" id="textdate">DATE OF BIRTH <span class="rdece">*</span></p>
                             <fieldset>
                                 <select name="" id="month" onchange="validateDate()">
                                     <option value="1">January</option>
@@ -252,9 +252,10 @@
                                 offers. You can opt out at any time.</p>
                         </div>
                         <div id="continue">
-                            <button id="gumb" type="submit" disabled="true" >
+                            <button id="gumb" type="submit" disabled="true">
                                 <p id="conttex">Continue</p>
                             </button>
+                            <div id="tooltip" class="tooltip">You have to agree to our terms first.</div>
                         </div>
                         <div id="terms">
                             <input type="checkbox" name="optional" class="check" id="checkic" onchange="checboxcheck()">
@@ -283,7 +284,7 @@
     function showAlert2(message, icon = 'success') {
         Swal.fire({
             toast: true,
-            
+
             icon: icon,
             title: message,
             confirmButtonText: "Ok",
@@ -296,19 +297,34 @@
         });
     }
     [input, input2, input3, input4].forEach(field => {
-            field.addEventListener('input', () => {
-                if (field.value.length > maxChars) {
-                    field.value = field.value.slice(0, maxChars);
-                }
-            });
+        field.addEventListener('input', () => {
+            if (field.value.length > maxChars) {
+                field.value = field.value.slice(0, maxChars);
+            }
         });
+    });
     const button = document.getElementById('gumb');
-    document.getElementById('mainform').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent actual form submission
+    document.getElementById('mainform').addEventListener('submit', function (event) {
+        event.preventDefault();
 
-    // Add your form submission logic here, e.g., form validation
-    showAlert2('Registration successful! You will be redirected shortly.');
-});
+       
+        showAlert2('Registration successful!');
+    });
+
+
+    const tooltip = document.getElementById('tooltip');
+
+    // Show tooltip if button is disabled and hovered over
+    button.addEventListener('mouseenter', () => {
+        if (button.disabled) {
+            tooltip.style.display = 'block';
+        }
+    });
+
+    // Hide tooltip when mouse leaves the button
+    button.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+    });
 </script>
 
 </html>
