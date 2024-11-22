@@ -17,7 +17,7 @@
     </div>
     <div id="middle">
         <div id="register">
-            <form id="mainform" method="post">
+            <form id="mainform">
                 <div id="box">
                     <div id="header">
                         <h2>Create an account</h2>
@@ -25,7 +25,7 @@
                     <div id="maininput">
                         <div class="indiv">
                             <p class="inputtext" id="emailtext">EMAIL <span class="rdece">*</span></p>
-                            <input type="text" name="email" id="email" required onchange="validateInput()">
+                            <input type="text" name="email" id="email"  onchange="validateInput()">
                         </div>
                         <div class="indiv">
                             <p class="inputtext">DISPLAY NAME</p>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="indiv">
                             <p class="inputtext">USERNAME <span class="rdece">*</span></p>
-                            <input type="text" id="username" name="username" required onchange="validateInput()">
+                            <input type="text" id="username" name="username"  onchange="checkUsName()">
                         </div>
                         <div class="indiv">
                             <p class="inputtext" id="passtext">PASSWORD <span class="rdece">*</span></p>
@@ -252,7 +252,7 @@
                                 offers. You can opt out at any time.</p>
                         </div>
                         <div id="continue">
-                            <button id="gumb" type="submit" disabled="true">
+                            <button id="gumb" type="submit" disabled="true" onclick="regSuc()">
                                 <p id="conttex">Continue</p>
                             </button>
                             <div id="tooltip" class="tooltip">You have to agree to our terms first.</div>
@@ -281,21 +281,7 @@
     const input4 = document.getElementById('pass');
     const maxChars = 30;
 
-    function showAlert2(message, icon = 'success') {
-        Swal.fire({
-            toast: true,
 
-            icon: icon,
-            title: message,
-            confirmButtonText: "Ok",
-            showConfirmButton: true,
-            confirmButtonColor: "rgb(98,103,250)"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "index.html";
-            }
-        });
-    }
     [input, input2, input3, input4].forEach(field => {
         field.addEventListener('input', () => {
             if (field.value.length > maxChars) {
@@ -303,15 +289,9 @@
             }
         });
     });
+    
+
     const button = document.getElementById('gumb');
-    document.getElementById('mainform').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-       //movaj v script.js in klici ko je pr interval metodi vse true
-        showAlert2('Registration successful!');
-    });
-
-
     const tooltip = document.getElementById('tooltip');
 
     // Show tooltip if button is disabled and hovered over

@@ -2,6 +2,7 @@ var inputcheck = false;
 var passcheck = false;
 var datecheck = true;
 var checkcheck = false;
+var uscheck = false;
 function validateInput() {
     const input = document.getElementById('email').value.trim();
     const emailtext = document.getElementById('emailtext');
@@ -11,6 +12,7 @@ function validateInput() {
     if (input === "") {
         gumb.disabled = true;
         emailtext.style.color = "red";
+        showAlert('Invalid input. Please enter a valid email');
     } else if (!emailPattern.test(input)) {
         showAlert('Invalid input. Please enter a valid email');
         gumb.disabled = true;
@@ -44,15 +46,15 @@ function checkPassword() {
         showAlert(messages.join(" "), "error");
         passtext.style.color = "red";
     } else {
-        passcheck=true;
+        passcheck = true;
         passtext.style.color = "lightgray";
     }
 }
-function checboxcheck(){
-    if(document.getElementById("checkic").checked)
-        checkcheck=true;
+function checboxcheck() {
+    if (document.getElementById("checkic").checked)
+        checkcheck = true;
     else
-        checkcheck=false;
+        checkcheck = false;
 }
 
 function validateDate() {
@@ -68,10 +70,20 @@ function validateDate() {
         datecheck = true;
         textdate.style.color = "lightgray";
     } else {
-        gumb.disabled=true;
+        gumb.disabled = true;
         showAlert('Invalid date. Please enter a valid date');
         textdate.style.color = "red";
         datecheck = false;
+    }
+}
+function checkUsName(){
+    const usname = document.getElementById("username");
+    const val = usname.value;
+    if(val.trim()==""){
+        uscheck=false;
+        showAlert('Please make a valid username');
+    }else{
+        uscheck=true;
     }
 }
 setInterval(preveri, 100);
@@ -79,15 +91,15 @@ function preveri() {
     const gumb = document.getElementById("gumb");
     const conttext = document.getElementById("conttex");
     //showAlert(inputcheck + passcheck + datecheck + checkcheck, 'info'  );
-    if(checkcheck && inputcheck && passcheck && datecheck){
-        gumb.disabled=false;
-        conttext.style.color="white";
+    if (checkcheck) {
+        gumb.disabled = false;
+        conttext.style.color = "white";
     }
-    else{
-        gumb.disabled=true; 
-        conttext.style.color="gray";
+    else {
+        gumb.disabled = true;
+        conttext.style.color = "gray";
     }
-        
+
 }
 function showAlert(message, icon = 'error') {
     Swal.fire({
@@ -98,9 +110,44 @@ function showAlert(message, icon = 'error') {
         confirmButtonText: "Ok",
         showConfirmButton: true,
         confirmButtonColor: "rgb(98,103,250)"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-            
+
         }
-      });
+    });
+}
+
+function regSuc(){
+    if (checkcheck && inputcheck && passcheck && datecheck && uscheck) {
+        showAlert2('Registration successful!');
+    } else {
+        event.preventDefault();
+        if(!inputcheck)
+            validateInput();
+        else if(!uscheck)
+            checkUsName();
+        else if(!passcheck)
+            checkPassword();
+        else if(!datecheck)
+            validateDate();
+        
+    }
+}
+    
+
+
+function showAlert2(message, icon = 'success') {
+    Swal.fire({
+        toast: true,
+
+        icon: icon,
+        title: message,
+        confirmButtonText: "Ok",
+        showConfirmButton: true,
+        confirmButtonColor: "rgb(98,103,250)"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "index.html";
+        }
+    });
 }
