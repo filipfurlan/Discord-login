@@ -32,7 +32,7 @@
                             <input type="text" name="displayname" id="disname">
                         </div>
                         <div class="indiv">
-                            <p class="inputtext">USERNAME <span class="rdece">*</span></p>
+                            <p class="inputtext" id="usnametext">USERNAME <span class="rdece">*</span></p>
                             <input type="text" id="username" name="username"  onchange="checkUsName()">
                         </div>
                         <div class="indiv">
@@ -252,7 +252,7 @@
                                 offers. You can opt out at any time.</p>
                         </div>
                         <div id="continue">
-                            <button id="gumb" type="submit" disabled="true" onclick="regSuc()">
+                            <button id="gumb" type="submit" disabled="true" onclick="regSuc(event)">
                                 <p id="conttex">Continue</p>
                             </button>
                             <div id="tooltip" class="tooltip">You have to agree to our terms first.</div>

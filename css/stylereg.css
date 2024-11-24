@@ -142,6 +142,7 @@ fieldset > select{
 }
 #continue{
     margin-top: 4%;
+    position: relative;
 }
 #continue > button{
     border: none;
@@ -195,17 +196,16 @@ a:hover{
     text-decoration: underline;
 }
 #tooltip {
-    display: none; /* Initially hidden */
+    display: none;
     position: absolute;
     background-color: #333;
     color: red;
     padding: 5px;
     border-radius: 4px;
     font-size: 12px;
-    top: 100%;
-    left: 0;
-    margin-top: -37%;
-    margin-left: 32%;
+    top: -40px; 
+    left: 50%; 
+    transform: translateX(-50%); 
     white-space: nowrap;
     z-index: 1000;
   }

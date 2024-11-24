@@ -78,12 +78,15 @@ function validateDate() {
 }
 function checkUsName(){
     const usname = document.getElementById("username");
+    const usnametext = document.getElementById("usnametext");
     const val = usname.value;
     if(val.trim()==""){
         uscheck=false;
+        usnametext.style.color = "red";
         showAlert('Please make a valid username');
     }else{
         uscheck=true;
+        usnametext.style.color = "lightgray";
     }
 }
 setInterval(preveri, 100);
@@ -117,11 +120,11 @@ function showAlert(message, icon = 'error') {
     });
 }
 
-function regSuc(){
+function regSuc(event){
+    event.preventDefault();
     if (checkcheck && inputcheck && passcheck && datecheck && uscheck) {
         showAlert2('Registration successful!');
     } else {
-        event.preventDefault();
         if(!inputcheck)
             validateInput();
         else if(!uscheck)
@@ -130,7 +133,8 @@ function regSuc(){
             checkPassword();
         else if(!datecheck)
             validateDate();
-        
+        else
+            showAlert2('Registration successful!');
     }
 }
     
