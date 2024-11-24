@@ -12,6 +12,6 @@ Ustvaril sem prijavno in registracijsko stran, ki je oblikovana po vzoru Discord
 
 ## Slike
 
-![App Screenshot](img/ss1.png)
-![App Screenshot](img/ss2.png)
+![App Screenshot](slike/ss1)
+![App Screenshot](slike/ss2)
 

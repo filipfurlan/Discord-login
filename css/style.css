@@ -10,7 +10,7 @@ html, body {
 }
 
 body {
-    background-image: url("../slike/newback.svg");
+    background-image: url("../img/newback.svg");
     background-size: cover;
     background-position: center;
     display: flex;
